@@ -39,7 +39,10 @@ plt.colorbar()
 plt.show()
 
 
-# Now we have the temporal snapshots in the input matrix rows: we can easily create a new DMD instance and exploit it in order to compute the decomposition on the data. Since the snapshots must be arranged by columns, in this case we need to transpose the matrix.
+# Now we have the temporal snapshots in the input matrix rows: 
+# we can easily create a new DMD instance and exploit it in order to 
+# compute the decomposition on the data. Since the snapshots must be arranged 
+# by columns, in this case we need to transpose the matrix.
 
 dmd = DMD(svd_rank=2)
 dmd.fit(X.T)
@@ -53,7 +56,11 @@ dmd.fit(X.T)
 # 
 # Moreover, some helpful methods for the graphical representation are provided.
 
-# Thanks to the eigenvalues, we can check if the modes are stable or not: if an eigenvalue is on the unit circle, the corresponding mode will be stable; while if an eigenvalue is inside or outside the unit circle, the mode will converge or diverge, respectively. From the following plot, we can note that the two modes are stable.
+# Thanks to the eigenvalues, we can check if the modes are stable or not: 
+# if an eigenvalue is on the unit circle, the corresponding 
+# mode will be stable; while if an eigenvalue is inside or outside the 
+# unit circle, the mode will converge or diverge, respectively. 
+# From the following plot, we can note that the two modes are stable.
 
 for eig in dmd.eigs:
     print('Eigenvalue {}: distance from unit circle {}'.format(eig, np.abs(np.sqrt(eig.imag**2+eig.real**2) - 1)))
@@ -74,7 +81,9 @@ for dynamic in dmd.dynamics:
 plt.show()
 
 
-# Finally, we can reconstruct the original dataset as the product of modes and dynamics. We plot the evolution of each mode to emphasize their similarity with the input functions and we plot the reconstructed data.
+# Finally, we can reconstruct the original dataset as the product of modes 
+# and dynamics. We plot the evolution of each mode to emphasize their 
+# similarity with the input functions and we plot the reconstructed data.
 
 fig = plt.figure(figsize=(17,6))
 
